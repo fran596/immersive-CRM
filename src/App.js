@@ -1,17 +1,24 @@
 import React from 'react'
-import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
-import Styles from './styles/app.css'
+import CompanyContainer from './Company/CompanyContainer.js'
+import ContactContainer from './Contact/ContactContainer.js';
+import HeaderContainer from './Header/HeaderContainer.js'
 
 
 
 const App = () => {
 
     return (
-        <div className="container-fluid" >
-            <div className="row">
-                <div className="col-md-12">
-                    <h1>Test:</h1>
-                    <button type="button" className="btn btn-primary">Primary</button>
+        <div>
+            <HeaderContainer />
+            <div className="container-fluid" >
+                <div className="row">
+                    <div className="col-lg-6">
+                        <CompanyContainer />
+                        
+                    </div>
+                    <div className="col-lg-6">
+                    <ContactContainer />
+                    </div>
                 </div>
             </div>
         </div>
