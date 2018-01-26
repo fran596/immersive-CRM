@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 const ContactTable = (props) => {
     //console.log(props.contacts)
     return (
-        <table className="table">
+        <table className="table table-condensed">
             <thead className="thead-dark" >
                 <tr>
                     <th scope="col" >ID</th>

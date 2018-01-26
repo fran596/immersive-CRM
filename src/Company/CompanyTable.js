@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 const CompanyTable = (props) => {
     //console.log(props.companies)
     return (
-        <table className="table">
+        <table className="table table-condensed">
             <thead className="thead-dark" >
                 <tr>
                     <th scope="col" >ID</th>

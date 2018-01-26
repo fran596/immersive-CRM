@@ -1,22 +1,21 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import ContactTable from './ContactTable'
+import { fetchContact } from './ContactActions'
 
 class ContactContainer extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            contacts: []
-        }
+
     }
 
     componentDidMount(){
         fetch('http://localhost:2000/Contact').then((data) => {
-            //console.log(data)
             return data.json()
           }).then((contact) => {
-            //console.log(todos)
-            this.setState({ contacts: contact })
+            this.props.fetchContact(contact)
           })
     }
 
@@ -25,10 +24,34 @@ class ContactContainer extends React.Component {
         return (
             <div>
                 <h1>Contacts</h1>
-                <ContactTable contacts={this.state.contacts} />
+                <ContactTable contacts={this.props.contacts} />
             </div>
         );
     }
 }
 
-export default ContactContainer;
+ContactContainer.propTypes = {
+    contacts: PropTypes.array,
+    fetchContact: PropTypes.func
+}
+
+ContactContainer.defaultProps = {
+    contacts: [],
+    fetchContact: () => { }
+}
+
+function mapStateToProps(state) {
+    return {
+        contacts: state.contact.contacts
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        fetchContact: value => dispatch(fetchContact(value))
+    }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactContainer) ;
