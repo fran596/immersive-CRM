@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware, combineReducers  } from 'redux'
+import ReduxThunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly'
 import { createLogger } from 'redux-logger'
 import CompanyReducer from './Company/CompanyReducer'
@@ -17,6 +18,7 @@ var reducer = combineReducers({
 
 const store = createStore(reducer, composeWithDevTools(
     applyMiddleware(
+        ReduxThunk,
         logger,
     ),
 ))

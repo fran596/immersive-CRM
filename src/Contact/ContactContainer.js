@@ -12,11 +12,12 @@ class ContactContainer extends React.Component {
     }
 
     componentDidMount(){
-        fetch('http://localhost:2000/Contact').then((data) => {
-            return data.json()
-          }).then((contact) => {
-            this.props.fetchContact(contact)
-          })
+        // fetch('http://localhost:2000/Contact').then((data) => {
+        //     return data.json()
+        //   }).then((contact) => {
+        //     this.props.fetchContact(contact)
+        //   })
+        this.props.loadData()
     }
 
 
@@ -32,12 +33,12 @@ class ContactContainer extends React.Component {
 
 ContactContainer.propTypes = {
     contacts: PropTypes.array,
-    fetchContact: PropTypes.func
+    loadData: PropTypes.func
 }
 
 ContactContainer.defaultProps = {
     contacts: [],
-    fetchContact: () => { }
+    loadData: () => { }
 }
 
 function mapStateToProps(state) {
@@ -48,7 +49,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        fetchContact: value => dispatch(fetchContact(value))
+        loadData: () => {
+            dispatch(fetchContact())
+          }
     }
 }
 

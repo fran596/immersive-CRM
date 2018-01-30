@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchCompany } from './CompanyActions'
-import ContactTable from './CompanyTable'
+import CompanyTable from './CompanyTable'
 
 
 class CompanyContainer extends React.Component {
@@ -13,11 +13,7 @@ class CompanyContainer extends React.Component {
     }
 
     componentDidMount(){
-        fetch('http://localhost:2000/Company').then((data) => {
-            return data.json()
-          }).then((company) => {
-            this.props.fetchCompany(company)
-          })
+        this.props.loadData()
     }
 
 
@@ -26,7 +22,7 @@ class CompanyContainer extends React.Component {
         return (
             <div>
                 <h1>Companies</h1>
-                <ContactTable companies={this.props.companies} />
+                <CompanyTable companies={this.props.companies} />
             </div>
         );
     }
@@ -34,12 +30,12 @@ class CompanyContainer extends React.Component {
 
 CompanyContainer.propTypes = {
     companies: PropTypes.array,
-    fetchCompany: PropTypes.func
+    loadData: PropTypes.func
 }
 
 CompanyContainer.defaultProps = {
     companies: [],
-    fetchCompany: () => { }
+    loadData: () => { }
 }
 
 function mapStateToProps(state) {
@@ -50,7 +46,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        fetchCompany: value => dispatch(fetchCompany(value))
+        loadData: () => {
+            dispatch(fetchCompany())
+          }
     }
 }
 
