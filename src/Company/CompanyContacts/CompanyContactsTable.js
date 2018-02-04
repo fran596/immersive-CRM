@@ -1,9 +1,9 @@
 import React from 'react'
-import ContactRow from './ContactRow'
 import PropTypes from 'prop-types'
+import CompanyContactsRow from './CompanyContactsRow'
 
-const ContactTable = (props) => {
-    //console.log(props.contacts)
+const CompanyContactsTable = (props) => {
+    let companyName = props.company
     return (
         <table className="table table-condensed table-hover">
             <thead className="thead-dark" >
@@ -20,8 +20,10 @@ const ContactTable = (props) => {
             {
                 
                 props.contacts.map(function (contact) {
-                    //console.log(contact);
-                return <ContactRow key={contact.id} contact={contact} />
+                    if(contact.company === companyName ){
+                        return <CompanyContactsRow key={contact.id} contact={contact} />
+                    }
+               
             })}
             </tbody>
         </table>
@@ -29,12 +31,14 @@ const ContactTable = (props) => {
 
 }
 
-ContactTable.propTypes = {
-    contacts: PropTypes.array
+CompanyContactsTable.propTypes = {
+    contacts: PropTypes.object,
+    onViewCompany: PropTypes.func
 }
 
-ContactTable.defaultProps = {
-    contacts: [],
+CompanyContactsTable.defaultProps = {
+    contacts: {},
+    onViewCompany: () => {}
 }
 
-export default ContactTable;
+export default CompanyContactsTable;

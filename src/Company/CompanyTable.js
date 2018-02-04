@@ -3,10 +3,11 @@ import CompanyRow from './CompanyRow'
 import PropTypes from 'prop-types'
 
 const CompanyTable = (props) => {
-    //console.log(props.companies)
+    // console.log(props)
+    var aux = props;
     return (
-        <table className="table table-condensed">
-            <thead className="thead-dark" >
+        <table className="table table-condensed table-hover table-bg">
+            <thead className="thead-bg " >
                 <tr>
                     <th scope="col" >ID</th>
                     <th scope="col" >Name</th>
@@ -16,10 +17,10 @@ const CompanyTable = (props) => {
             </thead>
             <tbody>
             {
-                
-                props.companies.map(function (company) {
+                 
+                 props.companies.map(function (company) {
                     //console.log(company);
-                return <CompanyRow key={company.id} company={company} />
+                return <CompanyRow key={company.id} company={company} onViewCompany={aux.onViewCompany} />
             })}
             </tbody>
         </table>

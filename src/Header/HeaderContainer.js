@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const HeaderContainer = () => {
     return (
@@ -7,23 +8,17 @@ const HeaderContainer = () => {
                 <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <a className="navbar-brand nav-link" href="#home">Me</a>
+                <div className="navbar-brand nav-link"><span><Link to="/" className="navbar-brand">CRM</Link></span></div>
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className="nav-link" href="#education">Education</a>
+                           <Link to="/Company">Companies</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#experience">Experience</a>
+                        <Link to="/Contact">Contacts</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#skills">Technical Skills</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#lang">Languagues</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#other">Other</a>
+                            <Link to="/Company/viewCompany">Prueba</Link>
                         </li>
                     </ul>
                 </div>

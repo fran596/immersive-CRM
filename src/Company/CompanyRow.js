@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const CompanyRow = (props) => {
     return(
-        <tr>
+        <tr onClick={()=>props.onViewCompany(props.company)}>
             <td>{props.company.id}</td>
             <td>{props.company.name}</td>
             <td>{props.company.address}</td>
@@ -14,11 +14,13 @@ const CompanyRow = (props) => {
 }
 
 CompanyRow.propTypes = {
-    company: PropTypes.object
+    company: PropTypes.object,
+    onViewCompany: PropTypes.func
 }
 
 CompanyRow.defaultProps = {
     company: {},
+    onViewCompany: () => {}
 }
 
 export default CompanyRow;

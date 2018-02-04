@@ -1,35 +1,40 @@
 {
-    "Company": [
-        {
-            "id": 1,
-            "name": "Microsoft",
-            "address": "USA",
-            "phone": "123456789"
-        },
-        {
-            "id": 2,
-            "name": "Apple",
-            "address": "USA",
-            "phone": "987654321"
-        }
-    ],
-    
-    "Contact": [
-        {
-            "id": 1,
-            "name": "Fran",
-            "email": "fran@gmail.com",
-            "phone": "86521398",
-            "position": "employee",
-            "company": "Apple"
-        },
-        {
-            "id": 2,
-            "name": "Alicia",
-            "email": "alicia@gmail.com",
-            "phone": "85109732",
-            "position": "employee",
-            "company": "Microsoft"
-        }
-    ]
+  "Company": [
+    {
+      "id": 1,
+      "name": "Microsoft",
+      "address": "USA",
+      "phone": "2222222222"
+    },
+    {
+      "id": 2,
+      "name": "Apple",
+      "address": "USA",
+      "phone": "987654321"
+    },
+    {
+      "name": "Prueba",
+      "address": "cr",
+      "phone": "86898558",
+      "id": 3
+    }
+  ],
+  "Contact": [
+    {
+      "id": 1,
+      "name": "Fran",
+      "email": "fran@gmail.com",
+      "phone": "86521398",
+      "position": "employee",
+      "company": "Apple"
+    },
+    {
+      "id": 2,
+      "name": "Alicia",
+      "email": "alicia@gmail.com",
+      "phone": "85109732",
+      "position": "employee",
+      "company": "Microsoft"
+    }
+  ]
 }

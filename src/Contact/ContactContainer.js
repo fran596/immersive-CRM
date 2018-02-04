@@ -11,21 +11,18 @@ class ContactContainer extends React.Component {
 
     }
 
-    componentDidMount(){
-        // fetch('http://localhost:2000/Contact').then((data) => {
-        //     return data.json()
-        //   }).then((contact) => {
-        //     this.props.fetchContact(contact)
-        //   })
+    componentDidMount() {
         this.props.loadData()
     }
 
 
     render() {
         return (
-            <div>
-                <h1>Contacts</h1>
-                <ContactTable contacts={this.props.contacts} />
+            <div className="col-md-10 class-container">
+                {/* <h1>Contacts</h1> */}
+                <div className="card-table">
+                    <ContactTable contacts={this.props.contacts} />
+                </div>
             </div>
         );
     }
@@ -51,10 +48,10 @@ function mapDispatchToProps(dispatch) {
     return {
         loadData: () => {
             dispatch(fetchContact())
-          }
+        }
     }
 }
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactContainer) ;
+export default connect(mapStateToProps, mapDispatchToProps)(ContactContainer);
