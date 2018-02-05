@@ -11,12 +11,6 @@
       "name": "Apple",
       "address": "USA",
       "phone": "987654321"
-    },
-    {
-      "name": "Prueba",
-      "address": "cr",
-      "phone": "86898558",
-      "id": 3
     }
   ],
   "Contact": [

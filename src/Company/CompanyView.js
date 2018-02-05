@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { updateCompany } from './CompanyActions'
+import { updateCompany, deleteCompany } from './CompanyActions'
 import { fetchContact, updateContactsCompany } from '../Contact/ContactActions'
 import CompanyContactsTable from './CompanyContacts/CompanyContactsTable'
 
@@ -11,10 +11,10 @@ class CompanyView extends React.Component {
         super(props);
         this.state = {
             companyName: this.props.location.state.element.name,
-            item: this.props.location.state.element,
-            contacts: []
+            item: this.props.location.state.element
         },
-            this.onUpdateCompany = this.onUpdateCompany.bind(this);
+        this.onUpdateCompany = this.onUpdateCompany.bind(this);
+        this.onDeleteCompany = this.onDeleteCompany.bind(this);
         this.onNameChange = this.onNameChange.bind(this);
         this.onAddressChange = this.onAddressChange.bind(this);
         this.onPhoneChange = this.onPhoneChange.bind(this);
@@ -45,22 +45,23 @@ class CompanyView extends React.Component {
     }
 
     onUpdateCompany() {
-        // let newContacts = this.props.contacts
-        // this.setState({contacts: newContacts})
         let companyName = this.state.item.name
         let newContacts = this.props.contacts.map(function (el) {
             el.company = companyName
             return el
         })
-        console.log(newContacts)
+        // console.log(newContacts)
         try {
             this.props.updateContactsCompany(newContacts)
             this.props.updateCompany(this.state.item)
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
+    }
 
-
+    onDeleteCompany(){
+        let company = this.props.location.state.element;
+        this.props.deleteCompany(company.id)
     }
 
     render() {
@@ -82,7 +83,7 @@ class CompanyView extends React.Component {
                         <input className="form-control" type="text" value={element.phone} id="phone" onChange={this.onPhoneChange} />
                     </div>
                     <button className="btn btn-primary card-button" onClick={this.onUpdateCompany}>Save</button>
-                    <button type="submit" className="btn btn-primary card-button btn-danger">Delete</button>
+                    <button type="submit" className="btn btn-primary card-button btn-danger" onClick={this.onDeleteCompany}>Delete</button>
                 </div>
                 <div className="row class-container">
                     <div className="col-md-10">
@@ -93,6 +94,24 @@ class CompanyView extends React.Component {
             </div>
         );
     }
+}
+
+CompanyView.propTypes = {
+    contacts: PropTypes.array,
+    updateContactsCompany: PropTypes.func,
+    updateCompany: PropTypes.func,
+    deleteCompany: PropTypes.func,
+    fetchContact: PropTypes.func,
+    location: PropTypes.any
+}
+
+CompanyView.defaultProps = {
+    contacts: [],
+    updateContactsCompany: () => {},
+    updateCompany: () => {},
+    deleteCompany: () => {},
+    fetchContact: () => {},
+    location: null
 }
 
 function mapStateToProps(state) {
@@ -106,7 +125,8 @@ function mapDispatchToProps(dispatch) {
     return {
         updateCompany: element => dispatch(updateCompany(element)),
         fetchContact: dispatch(fetchContact()),
-        updateContactsCompany: contacts => dispatch(updateContactsCompany(contacts))
+        updateContactsCompany: contacts => dispatch(updateContactsCompany(contacts)),
+        deleteCompany: id => dispatch(deleteCompany(id))
     }
 }
 

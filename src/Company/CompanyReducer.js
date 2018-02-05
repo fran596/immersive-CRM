@@ -40,6 +40,23 @@ const companies = (state = DEFAULT_STATE, action) => {
                 ...state,
                 error: action.error
             }
+            case 'DELETE_COMPANY_REQUEST':
+            return {
+                ...state,
+                loading: true
+            }
+        case 'DELETE_COMPANY_SUCCESS':
+            return {
+                ...state,
+                todos: state.companies.filter(item => {
+                    return item.id !== action.id;
+                })
+            }
+        case 'DELETE_COMPANY_FAILURE':
+            return {
+                ...state,
+                error: action.error
+            }
         case 'UPDATE_COMPANY_REQUEST':
             return {
                 ...state,

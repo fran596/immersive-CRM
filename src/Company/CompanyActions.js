@@ -12,6 +12,11 @@ const ADD_COMPANY_REQUEST = 'ADD_COMPANY_REQUEST';
 const ADD_COMPANY_SUCCESS = 'ADD_COMPANY_SUCCESS';
 const ADD_COMPANY_FAILURE = 'ADD_COMPANY_FAILURE';
 
+const DELETE_COMPANY_REQUEST = 'DELETE_COMPANY_REQUEST';
+const DELETE_COMPANY_SUCCESS = 'DELETE_COMPANY_SUCCESS';
+const DELETE_COMPANY_FAILURE = 'DELETE_COMPANY_FAILURE';
+
+
 export const fetchCompany = () => {
         return function (dispatch) {
                 dispatch({
@@ -90,6 +95,30 @@ export const addCompany = company => {
       .catch(error => {
         dispatch({
           type: ADD_COMPANY_FAILURE,
+          error: error
+        })
+      })
+  }
+}
+
+export const deleteCompany = id => {
+  return function (dispatch) {
+    dispatch({
+      type: DELETE_COMPANY_REQUEST
+    })
+    fetch(`${API_URL}/${id}`, {
+      method: 'DELETE'
+    })
+      .then(response => response.json())
+      .then(data => {
+        dispatch({
+          type: DELETE_COMPANY_SUCCESS,
+          id: id
+        })
+      })
+      .catch(error => {
+        dispatch({
+          type: DELETE_COMPANY_FAILURE,
           error: error
         })
       })
