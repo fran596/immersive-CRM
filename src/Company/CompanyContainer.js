@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import { fetchCompany } from './CompanyActions'
 import CompanyTable from './CompanyTable'
 
-
-
 class CompanyContainer extends React.Component {
 
     constructor(props) {
@@ -18,13 +16,6 @@ class CompanyContainer extends React.Component {
     }
 
     onViewCompany(element) {
-        // console.log('hice click');
-        // this.context.router.transitionTo('/Contact');
-        // let x =this.props.companies;
-        // let param = '?id='+id;
-        // console.log(param);
-        // let update = this.onUpdateCompany
-        
         this.props.history.push({
             pathname: '/Company/viewCompany',
             search: '',
@@ -36,18 +27,12 @@ class CompanyContainer extends React.Component {
     render() {
         return (
             <div className="col-md-10 class-container">
-                {/* <h1>Companies</h1> */}
                 <div className="card-table">
                     <CompanyTable companies={this.props.companies} onViewCompany={this.onViewCompany} />
                 </div>
-                {/* <Link  to={`${this.props.match.url}/viewCompany`}>
-                <CompanyView />
-                </Link> */}
             </div>
         );
     }
-
-    
 }
 
 CompanyContainer.propTypes = {
@@ -75,7 +60,5 @@ function mapDispatchToProps(dispatch) {
         }
     }
 }
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(CompanyContainer);

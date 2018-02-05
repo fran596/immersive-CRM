@@ -1,4 +1,4 @@
-// todos reducer
+// company reducer
 
 const DEFAULT_STATE = {
     companies: [],
