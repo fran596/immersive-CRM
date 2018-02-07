@@ -1,6 +1,8 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import ContactContainer from './Contact/ContactContainer'
+import ContactView from './Contact/ContactView'
+import ContactNew from './Contact/ContactNew'
 import HeaderContainer from './Header/HeaderContainer'
 import SideBarContainer from './SideBar/SideBarContainer'
 import CompanyRouter from './Company/CompanyRouter'
@@ -27,6 +29,8 @@ const App = () => {
                         <Route exact path="/Company/viewCompany" component={CompanyView} />
                         <Route exact path="/Company/newCompany" component={CompanyNew} />
                         <Route exact path='/Contact' component={ContactContainer} />
+                        <Route exact path='/Contact/newContact' component={ContactNew} />
+                        <Route exact path='/Contact/viewContact' component={ContactView} />
                     </Switch>
                 </div>
             </div>

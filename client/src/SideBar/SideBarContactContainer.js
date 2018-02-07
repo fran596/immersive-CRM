@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const SideBarContactContainer = () => {
     return (
@@ -7,7 +8,7 @@ const SideBarContactContainer = () => {
                 Contacts
             </h6>
             <ul className="sideBar-list">
-                <li>Query Contacts</li>
+            <li><Link to="/Contact/newContact">Add new contact</Link></li>
             </ul>
 
         </div>

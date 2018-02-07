@@ -16,13 +16,11 @@ const CompanyContactsRow = (props) => {
 }
 
 CompanyContactsRow.propTypes = {
-    contact: PropTypes.object,
-    onViewCompany: PropTypes.func
+    contact: PropTypes.object
 }
 
 CompanyContactsRow.defaultProps = {
-    contact: {},
-    onViewCompany: () => {}
+    contact: {}
 }
 
 export default CompanyContactsRow;

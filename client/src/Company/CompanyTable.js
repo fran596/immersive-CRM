@@ -20,7 +20,7 @@ const CompanyTable = (props) => {
                  
                  props.companies.map(function (company) {
                     //console.log(company);
-                return <CompanyRow key={company.id} company={company} onViewCompany={aux.onViewCompany} />
+                return <CompanyRow key={company._id} company={company} onViewCompany={aux.onViewCompany} />
             })}
             </tbody>
         </table>

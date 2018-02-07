@@ -1,5 +1,6 @@
 // company reducer
 
+
 const DEFAULT_STATE = {
     companies: [],
     loading: false,
@@ -40,7 +41,7 @@ const companies = (state = DEFAULT_STATE, action) => {
                 ...state,
                 error: action.error
             }
-            case 'DELETE_COMPANY_REQUEST':
+        case 'DELETE_COMPANY_REQUEST':
             return {
                 ...state,
                 loading: true
@@ -72,7 +73,8 @@ const companies = (state = DEFAULT_STATE, action) => {
                         item.phone = action.phone
                     }
                     return item;
-                }),
+                }
+            ),
                 loading: false
             }
         case 'UPDATE_COMPANY_FAILURE':

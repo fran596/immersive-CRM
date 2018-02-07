@@ -17,9 +17,6 @@ const HeaderContainer = () => {
                         <li className="nav-item">
                         <Link to="/Contact">Contacts</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link to="/Company/viewCompany">Prueba</Link>
-                        </li>
                     </ul>
                 </div>
             </nav>

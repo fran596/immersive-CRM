@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { updateCompany, deleteCompany } from './CompanyActions'
-import { fetchContact, updateContactsCompany } from '../Contact/ContactActions'
+import { updateContactsCompany } from '../Contact/ContactActions'
 import CompanyContactsTable from './CompanyContacts/CompanyContactsTable'
 
 class CompanyView extends React.Component {
@@ -21,7 +21,7 @@ class CompanyView extends React.Component {
     }
 
     componentDidMount() {
-        if (this.props.contacts === {}) {
+        if (this.props.contacts === []) {
             this.props.fetchContact()
         }
     }
@@ -46,13 +46,19 @@ class CompanyView extends React.Component {
 
     onUpdateCompany() {
         let companyName = this.state.item.name
+        this.setState({companyName: companyName})
+        let companyID = this.state.item._id
+        //console.log(companyID)
         let newContacts = this.props.contacts.map(function (el) {
             el.company = companyName
+            el.company_id = companyID
+            //console.log(el)
             return el
         })
-        // console.log(newContacts)
+        let test = {old: this.state.companyName, new: companyName}
+        // console.log(test)
         try {
-            this.props.updateContactsCompany(newContacts)
+            this.props.updateContactsCompany(newContacts,test)
             this.props.updateCompany(this.state.item)
         } catch (error) {
             // console.log(error)
@@ -61,11 +67,12 @@ class CompanyView extends React.Component {
 
     onDeleteCompany(){
         let company = this.props.location.state.element;
-        this.props.deleteCompany(company.id)
+        this.props.deleteCompany(company._id)
     }
 
     render() {
         let element = this.props.location.state.element;
+        // console.log(element)
         return (
             <div className="col-md-10 class-container">
                 <div className="card-table card-edit">
@@ -124,13 +131,10 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         updateCompany: element => dispatch(updateCompany(element)),
-        fetchContact: dispatch(fetchContact()),
-        updateContactsCompany: contacts => dispatch(updateContactsCompany(contacts)),
+        updateContactsCompany: (contacts, names) => dispatch(updateContactsCompany(contacts, names)),
         deleteCompany: id => dispatch(deleteCompany(id))
     }
 }
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(CompanyView);
 

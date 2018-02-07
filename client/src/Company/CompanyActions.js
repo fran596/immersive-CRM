@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:2000/Company'
+const API_URL = 'http://localhost:8081/api/v2/companies'
 
 const FETCH_COMPANY_REQUEST = 'FETCH_COMPANY_REQUEST';
 const FETCH_COMPANY_SUCCESS = 'FETCH_COMPANY_SUCCESS';
@@ -18,25 +18,25 @@ const DELETE_COMPANY_FAILURE = 'DELETE_COMPANY_FAILURE';
 
 
 export const fetchCompany = () => {
-        return function (dispatch) {
-                dispatch({
-                  type: FETCH_COMPANY_REQUEST
-                })
-                fetch(API_URL)
-                  .then(response => response.json())
-                  .then(data => {
-                    dispatch({
-                      type: FETCH_COMPANY_SUCCESS,
-                      companies: data
-                    })
-                  })
-                  .catch(error => {
-                    dispatch({
-                      type: FETCH_COMPANY_FAILURE,
-                      error: error
-                    })
-                  })
-              }
+  return function (dispatch) {
+    dispatch({
+      type: FETCH_COMPANY_REQUEST
+    })
+    fetch(API_URL)
+      .then(response => response.json())
+      .then(data => {
+        dispatch({
+          type: FETCH_COMPANY_SUCCESS,
+          companies: data
+        })
+      })
+      .catch(error => {
+        dispatch({
+          type: FETCH_COMPANY_FAILURE,
+          error: error
+        })
+      })
+  }
 }
 
 export const updateCompany = (element) => {
@@ -44,15 +44,13 @@ export const updateCompany = (element) => {
     dispatch({
       type: UPDATE_COMPANY_REQUEST
     })
-    fetch(`${API_URL}/${element.id}`, {
+    fetch(`${API_URL}/update`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        id: element.id,
-        name: element.name,
-        address: element.address,
-        phone: element.phone
-      }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(element),
     })
       .then(response => response.json())
       .then(data => {
@@ -75,11 +73,10 @@ export const addCompany = company => {
     dispatch({
       type: ADD_COMPANY_REQUEST
     })
-    fetch(API_URL, {
+    fetch(`${API_URL}/add`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        // id: uuid(),
         name: company.name,
         address: company.address,
         phone: company.phone
@@ -101,13 +98,17 @@ export const addCompany = company => {
   }
 }
 
-export const deleteCompany = id => {
+export const deleteCompany = (id) => {
   return function (dispatch) {
     dispatch({
       type: DELETE_COMPANY_REQUEST
     })
-    fetch(`${API_URL}/${id}`, {
-      method: 'DELETE'
+    fetch(`${API_URL}/delete`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id })
     })
       .then(response => response.json())
       .then(data => {

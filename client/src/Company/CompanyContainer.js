@@ -38,13 +38,13 @@ class CompanyContainer extends React.Component {
 CompanyContainer.propTypes = {
     companies: PropTypes.array,
     loadData: PropTypes.func,
-    history: PropTypes.func
+    history: PropTypes.object
 }
 
 CompanyContainer.defaultProps = {
     companies: [],
     loadData: () => { },
-    history: () => {}
+    history: null
 }
 
 function mapStateToProps(state) {
