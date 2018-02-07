@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 const ContactRow = (props) => {
     return(
         <tr onClick={()=>props.onViewContact(props.contact)}>
-            <td>{props.contact._id}</td>
             <td>{props.contact.name}</td>
             <td>{props.contact.email}</td>
             <td>{props.contact.phone}</td>

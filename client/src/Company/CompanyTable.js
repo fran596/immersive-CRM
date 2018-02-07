@@ -9,7 +9,6 @@ const CompanyTable = (props) => {
         <table className="table table-condensed table-hover table-bg">
             <thead className="thead-bg " >
                 <tr>
-                    <th scope="col" >ID</th>
                     <th scope="col" >Name</th>
                     <th scope="col" >Address</th>
                     <th scope="col" >Phone</th>

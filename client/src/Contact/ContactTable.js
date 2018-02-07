@@ -6,10 +6,9 @@ const ContactTable = (props) => {
     //console.log(props.contacts)
     var aux = props;
     return (
-        <table className="table table-condensed table-hover">
-            <thead className="thead-dark" >
+        <table className="table table-condensed table-hover table-bg">
+            <thead className="thead-bg" >
                 <tr>
-                    <th scope="col" >ID</th>
                     <th scope="col" >Name</th>
                     <th scope="col" >Email</th>
                     <th scope="col" >Phone</th>

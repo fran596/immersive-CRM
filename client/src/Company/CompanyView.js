@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { updateCompany, deleteCompany } from './CompanyActions'
-import { updateContactsCompany } from '../Contact/ContactActions'
+import { updateContactsCompany, fetchContact } from '../Contact/ContactActions'
 import CompanyContactsTable from './CompanyContacts/CompanyContactsTable'
 
 class CompanyView extends React.Component {
@@ -74,7 +74,7 @@ class CompanyView extends React.Component {
         let element = this.props.location.state.element;
         // console.log(element)
         return (
-            <div className="col-md-10 class-container">
+            <div className="col-md-10 class-container ">
                 <div className="card-table card-edit">
                     <h3>Edit Company</h3>
                     <div className="form-group">
@@ -130,6 +130,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
+        fetchContact: dispatch(fetchContact()),
         updateCompany: element => dispatch(updateCompany(element)),
         updateContactsCompany: (contacts, names) => dispatch(updateContactsCompany(contacts, names)),
         deleteCompany: id => dispatch(deleteCompany(id))

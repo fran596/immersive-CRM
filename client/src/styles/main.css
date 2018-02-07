@@ -20,6 +20,10 @@ a {
     color: rgba(255, 255, 255, 0.678)
 }
 
+ul {
+    list-style-type: none;
+  }
+
 .nav-item {
     margin-right: 4rem;
 }
@@ -73,12 +77,54 @@ a {
     padding-top: 1rem;
   }
 
+  .card-profile{
+      padding: 1rem;
+      /* background: url('../img/prueba4.jpg'); */
+      background-color: rgba(103, 110, 168, 0.87);
+      color: white;
+  }
+
+  .img-profile{
+    border-radius: 50%;
+    max-width: 10rem;
+    max-height: 10rem;
+    margin-top: 1rem;
+}
+
   .card-table {
-      /* height: auto;
-      width: 100%;
-      background: rgb(255, 255, 255);
-      padding: 2rem; */
       box-shadow: 0 .5em 1em rgba(0,0,0,.3);
+  }
+
+  .card-todos {
+      background-color: rgb(253, 255, 154);
+      /* background: url('../img/paper.jpg'); */
+      padding: 2rem;
+      
+    
+  }
+
+  .todos-input {
+      background-color: rgb(253, 255, 154);
+      border-bottom: 2px solid rgb(255, 255, 255);
+      border-top: 0px;
+      border-left: 0px;
+      border-right: 0px;
+      outline: none;
+      margin-bottom: 0.5rem;
+
+  }
+
+  .add-icon-todos {
+      height: 1rem;
+      width: 1rem;
+      margin: 0.5rem;
+  }
+
+  .delete-icon-todos {
+      height: 0.8rem;
+      width: 0.8rem;
+      margin: 0.3rem;
+      margin-bottom: 0.5rem;
   }
 
   .card-edit {
@@ -107,6 +153,10 @@ a {
 
   .table-bg {
       background: rgb(255, 255, 255)
+  }
+
+  .bullet-margin{
+      margin-right: 1rem;
   }
 
   .frosted-glass {

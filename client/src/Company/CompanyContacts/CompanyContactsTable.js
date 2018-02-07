@@ -5,7 +5,8 @@ import CompanyContactsRow from './CompanyContactsRow'
 const CompanyContactsTable = (props) => {
     let companyName = props.company
     return (
-        <table className="table table-condensed table-hover">
+        <div className="scroll-Div">
+        <table className="table table-condensed table-hover table-responsive">
             <thead className="thead-dark" >
                 <tr>
                     <th scope="col" >ID</th>
@@ -27,6 +28,7 @@ const CompanyContactsTable = (props) => {
             })}
             </tbody>
         </table>
+        </div>
     );
 
 }

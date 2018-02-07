@@ -16,7 +16,7 @@ import CompanyNew from './Company/CompanyNew'
 
 const App = () => {
     return (
-        <div>
+        <div className="default-wrap">
             <HeaderContainer />
             <div className="container-fluid" >
                 <div className="row">

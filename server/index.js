@@ -9,6 +9,7 @@ const DB_QUERY_STRING = process.env.DB
 
 const companiesRoutes = require('./routes/companies')
 const contactsRoutes = require('./routes/contacts')
+const todosRoutes = require('./routes/todos')
 const app = express()
 
 app.use(cors())
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/v2/companies', companiesRoutes)
 app.use('/api/v2/contacts', contactsRoutes)
+app.use('/api/v2/todos',todosRoutes)
 
 // app.get('/about', (req, res) => {
 //   res.send('ABOUT 💩')
