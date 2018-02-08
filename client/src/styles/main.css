@@ -20,6 +20,10 @@ a {
     color: rgba(255, 255, 255, 0.678)
 }
 
+a:hover {
+    color: white;
+}
+
 ul {
     list-style-type: none;
   }
@@ -49,16 +53,18 @@ ul {
 }
 
 .sidebar-sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 48px;
-    height: calc(100vh - 48px);
-    /* padding-top: .5rem; */
+    height: 100%; 
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    padding-top: 4rem;
+    width: 13rem;
     overflow-x: hidden;
     overflow-y: auto;
     background-color: rgba(68, 68, 90, 0.349);
+    
     box-shadow: 0 .5em 1em rgba(0,0,0,.3);
-    /* background: url('../img/prueba2.png') */
   }
   
   .sidebar .nav-link {
@@ -91,6 +97,12 @@ ul {
     margin-top: 1rem;
 }
 
+.img-profile-nav{
+    border-radius: 50%;
+    max-width: 2rem;
+    max-height: 2rem;
+}
+
   .card-table {
       box-shadow: 0 .5em 1em rgba(0,0,0,.3);
   }
@@ -99,8 +111,12 @@ ul {
       background-color: rgb(253, 255, 154);
       /* background: url('../img/paper.jpg'); */
       padding: 2rem;
-      
-    
+  }
+
+  .card-charts {
+      padding: 2rem;
+      background-color: rgb(49, 156, 49);
+      margin-bottom: 1rem;
   }
 
   .todos-input {
@@ -111,6 +127,7 @@ ul {
       border-right: 0px;
       outline: none;
       margin-bottom: 0.5rem;
+      width: 19rem;
 
   }
 

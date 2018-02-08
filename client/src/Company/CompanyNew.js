@@ -39,6 +39,11 @@ class CompanyNew extends React.Component {
             phone: this.state.phone
         }
         this.props.addCompany(newCompany)
+        this.props.history.push({
+            pathname: '/Company',
+            search: '',
+            state: {}
+        });
     }
 
     render() {
@@ -59,7 +64,7 @@ class CompanyNew extends React.Component {
                         <label htmlFor="phone">Phone:</label>
                         <input className="form-control" type="text" value={element.phone} id="phone" onChange={this.onPhoneChange} />
                     </div>
-                    <button className="btn btn-primary card-button" onClick={this.onAddCompany}>Save</button>
+                    <button className="btn btn-primary card-button" onClick={this.onAddCompany}>Submit</button>
                 </div>
             </div>
         );
@@ -68,11 +73,13 @@ class CompanyNew extends React.Component {
 
 
 CompanyNew.propTypes = {
-    addCompany: PropTypes.func
+    addCompany: PropTypes.func,
+    history: PropTypes.object
 }
 
 CompanyNew.defaultProps = {
-    addCompany: () => {}
+    addCompany: () => {},
+    history: null
 }
 
 

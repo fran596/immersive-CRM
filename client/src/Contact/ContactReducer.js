@@ -8,7 +8,6 @@ const DEFAULT_STATE = {
 
 const contacts = (state = DEFAULT_STATE, action) => {
     switch (action.type) {
-
         case 'FETCH_CONTACT_REQUEST':
             return {
                 ...state,
@@ -26,21 +25,37 @@ const contacts = (state = DEFAULT_STATE, action) => {
                 loading: false,
                 error: action.error
             }
+        case 'ADD_CONTACT_REQUEST':
+            return {
+                ...state,
+                loading: true
+            }
+        case 'ADD_CONTACT_SUCCESS':
+            return {
+                ...state,
+                contacts: [...state.contacts, { ...action.contact }]
+            }
+        case 'ADD_CONTACT_FAILURE':
+            return {
+                ...state,
+                error: action.error
+            }
         case 'UPDATE_CONTACT_REQUEST':
             return {
                 ...state,
                 loading: true
             }
         case 'UPDATE_CONTACT_SUCCESS':
+            console.log(action.data)
             return {
                 ...state,
-                contacts: state.contacts.map(item => {
-                    if (item.id === action.id) {
-                        item.name = action.name
-                        item.email = action.email
-                        item.phone = action.phone
-                        item.company = action.company
-                        item.position = action.position
+                contacts: state.contacts.filter(item => {
+                    if (item._id === action.data._id) {
+                        item.name = action.data.name
+                        item.email = action.data.email
+                        item.phone = action.data.phone
+                        item.company = action.data.company
+                        item.position = action.data.position
                     }
                     return item;
                 }),
@@ -82,7 +97,7 @@ const contacts = (state = DEFAULT_STATE, action) => {
         case 'DELETE_CONTACT_SUCCESS':
             return {
                 ...state,
-                todos: state.contacts.filter(item => {
+                contacts: state.contacts.filter(item => {
                     return item.id !== action.id;
                 })
             }
@@ -91,6 +106,24 @@ const contacts = (state = DEFAULT_STATE, action) => {
                 ...state,
                 error: action.error
             }
+        case 'DELETE_CONTACT_COMPANY_REQUEST':
+            return {
+                ...state,
+                loading: true
+            }
+        case 'DELETE_CONTACT_COMPANY_SUCCESS':
+            return {
+                ...state,
+                contacts: state.contacts.filter(item => {
+                    return item.company !== action.name;
+                })
+            }
+        case 'DELETE_CONTACT_COMPANY_FAILURE':
+            return {
+                ...state,
+                error: action.error
+            }
+        
         default:
             return state
     }

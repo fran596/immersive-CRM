@@ -92,11 +92,24 @@ function updateContactCompanyName(req, res) {
   })
 }
 
+function deleteContactsCompany(req, res){
+  let companyName = req.body.name
+  Contact.deleteMany({company: companyName},(err)=>{
+    if(err){
+      res.status(500)
+      res.send(`Cannot delete contacts ${err}`)
+    }
+    res.status(200)
+    res.json({message: "delete successful"})
+  })
+}
+
 module.exports = {
   getAll,
   updateContact,
   deleteContact,
   addContact,
-  updateContactCompanyName
+  updateContactCompanyName,
+  deleteContactsCompany
 }
 

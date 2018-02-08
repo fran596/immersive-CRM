@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { updateCompany, deleteCompany } from './CompanyActions'
-import { updateContactsCompany, fetchContact } from '../Contact/ContactActions'
+import { updateContactsCompany, fetchContact, deleteContactsCompany } from '../Contact/ContactActions'
 import CompanyContactsTable from './CompanyContacts/CompanyContactsTable'
 
 class CompanyView extends React.Component {
@@ -68,6 +68,12 @@ class CompanyView extends React.Component {
     onDeleteCompany(){
         let company = this.props.location.state.element;
         this.props.deleteCompany(company._id)
+        this.props.deleteContactsCompany(company.name)
+        this.props.history.push({
+            pathname: '/Company',
+            search: '',
+            state: {}
+        });
     }
 
     render() {
@@ -75,7 +81,7 @@ class CompanyView extends React.Component {
         // console.log(element)
         return (
             <div className="col-md-10 class-container ">
-                <div className="card-table card-edit">
+                <div className="card-table card-edit animated fadeIn">
                     <h3>Edit Company</h3>
                     <div className="form-group">
                         <label htmlFor="name">Name:</label>
@@ -108,8 +114,10 @@ CompanyView.propTypes = {
     updateContactsCompany: PropTypes.func,
     updateCompany: PropTypes.func,
     deleteCompany: PropTypes.func,
+    deleteContactsCompany: PropTypes.func,
     fetchContact: PropTypes.func,
-    location: PropTypes.any
+    location: PropTypes.any,
+    history: PropTypes.object
 }
 
 CompanyView.defaultProps = {
@@ -117,8 +125,10 @@ CompanyView.defaultProps = {
     updateContactsCompany: () => {},
     updateCompany: () => {},
     deleteCompany: () => {},
+    deleteContactsCompany: () => {},
     fetchContact: () => {},
-    location: null
+    location: null,
+    history: null
 }
 
 function mapStateToProps(state) {
@@ -133,7 +143,8 @@ function mapDispatchToProps(dispatch) {
         fetchContact: dispatch(fetchContact()),
         updateCompany: element => dispatch(updateCompany(element)),
         updateContactsCompany: (contacts, names) => dispatch(updateContactsCompany(contacts, names)),
-        deleteCompany: id => dispatch(deleteCompany(id))
+        deleteCompany: id => dispatch(deleteCompany(id)),
+        deleteContactsCompany: name => dispatch(deleteContactsCompany(name))
     }
 }
 

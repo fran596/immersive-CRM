@@ -68,6 +68,11 @@ class ContactView extends React.Component {
         try {
             // this.props.updateContactsCompany(newContacts)
             this.props.updateContact(this.state.item)
+            this.props.history.push({
+                pathname: '/Contact',
+                search: '',
+                state: {}
+            });
         } catch (error) {
             // console.log(error)
         }
@@ -83,7 +88,7 @@ class ContactView extends React.Component {
         let onDropdownClick = this.onDropdownClick
         return (
             <div className="col-md-10 class-container">
-                <div className="card-table card-edit">
+                <div className="card-table card-edit animated fadeIn">
                     <h3>Edit Contact</h3>
                     <div className="form-group">
                         <label htmlFor="name">Name:</label>
@@ -109,7 +114,7 @@ class ContactView extends React.Component {
                             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 {
                                     this.props.companies.map(function (item) {
-                                        return <div className="dropdown-item" onClick={onDropdownClick} value={item.name} > {item.name} </div >
+                                        return <div className="dropdown-item" onClick={onDropdownClick} key={item._id} value={item.name} > {item.name} </div >
                                     })
                                 }
                             </div>
@@ -133,7 +138,8 @@ ContactView.propTypes = {
     updateContact: PropTypes.func,
     deleteContact: PropTypes.func,
     location: PropTypes.any,
-    fetchCompany: PropTypes.func
+    fetchCompany: PropTypes.func,
+    history: PropTypes.object
 }
 
 ContactView.defaultProps = {
@@ -142,7 +148,8 @@ ContactView.defaultProps = {
     updateContact: () => {},
     deleteContact: () => {},
     location: null,
-    fetchCompany: () => {}
+    fetchCompany: () => {},
+    history: null
 }
 
 function mapStateToProps(state) {

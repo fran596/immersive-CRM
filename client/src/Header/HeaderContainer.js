@@ -10,12 +10,20 @@ const HeaderContainer = () => {
                 </button>
                 <div className="navbar-brand nav-link"><span><Link to="/" className="navbar-brand">CRM</Link></span></div>
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul className="navbar-nav">
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item">
+                           <Link to="/">Dashboard</Link>
+                        </li>
                         <li className="nav-item">
                            <Link to="/Company">Companies</Link>
                         </li>
                         <li className="nav-item">
                         <Link to="/Contact">Contacts</Link>
+                        </li>
+                    </ul>
+                    <ul className="navbar-nav">
+                        <li className="nav-item text-center">
+                           <Link to="/"><span><img className=" img-profile-nav" src={require('../img/me.jpg')} alt="" /></span>  Francisco</Link>
                         </li>
                     </ul>
                 </div>

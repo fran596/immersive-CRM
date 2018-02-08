@@ -6,7 +6,7 @@ const ContactTable = (props) => {
     //console.log(props.contacts)
     var aux = props;
     return (
-        <table className="table table-condensed table-hover table-bg">
+        <table className="table table-condensed table-hover table-bg animated fadeIn">
             <thead className="thead-bg" >
                 <tr>
                     <th scope="col" >Name</th>

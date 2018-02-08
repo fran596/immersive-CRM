@@ -49,8 +49,8 @@ const companies = (state = DEFAULT_STATE, action) => {
         case 'DELETE_COMPANY_SUCCESS':
             return {
                 ...state,
-                todos: state.companies.filter(item => {
-                    return item.id !== action.id;
+                companies: state.companies.filter(item => {
+                    return item._id !== action.id;
                 })
             }
         case 'DELETE_COMPANY_FAILURE':

@@ -73,6 +73,11 @@ class ContactNew extends React.Component {
         }
         // console.log(newContact)
         this.props.addContact(newContact)
+        this.props.history.push({
+            pathname: '/Contact',
+            search: '',
+            state: {}
+        });
     }
 
     render() {
@@ -127,13 +132,15 @@ class ContactNew extends React.Component {
 ContactNew.propTypes = {
     companies: PropTypes.array,
     addContact: PropTypes.func,
-    fetchCompany: PropTypes.func
+    fetchCompany: PropTypes.func,
+    history: PropTypes.object
 }
 
 ContactNew.defaultProps = {
     companies: [],
     addContact: () => {},
-    fetchCompany: () => {}
+    fetchCompany: () => {},
+    history: null
 }
 
 

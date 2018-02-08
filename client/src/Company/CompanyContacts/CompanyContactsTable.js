@@ -6,7 +6,7 @@ const CompanyContactsTable = (props) => {
     let companyName = props.company
     return (
         <div className="scroll-Div">
-        <table className="table table-condensed table-hover table-responsive">
+        <table className="table table-condensed table-hover animated fadeInUp">
             <thead className="thead-dark" >
                 <tr>
                     <th scope="col" >ID</th>

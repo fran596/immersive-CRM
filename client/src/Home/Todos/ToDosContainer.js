@@ -41,7 +41,7 @@ class ToDosContainer extends React.Component {
     }
 
     render() {
-        console.log(this.props.todos)
+        // console.log(this.props.todos)
         return (
             <div>
                 <input type="text" value={this.state.inputVal} onChange={this.onTextChange} className="todos-input" />

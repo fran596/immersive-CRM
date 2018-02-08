@@ -14,7 +14,6 @@ const todos = (state = DEFAULT_STATE, action) => {
                 loading: true
             }
         case 'FETCH_TODO_SUCCESS':
-            console.log(action.todos)
             return {
                 ...state,
                 loading: false,
