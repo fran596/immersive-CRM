@@ -19,15 +19,12 @@ const BarChartContainer = (props) => {
             })
             contactCounter = 0
         }
-    console.log(newData)
     return (
         <BarChart
             axes
             colorBars
             height={250}
-            width={750}
-            yDomainRange={[0, 15]}
-            clickHandler={(d) => this.setState({dataDisplay: `The value on the ${d.x} is ${d.y}`})}
+            width={550}
             data={newData}
         />
     );

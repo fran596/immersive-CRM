@@ -57,7 +57,7 @@ class CompanyNew extends React.Component {
                         <input className="form-control" type="text" value={element.name} id="name" onChange={this.onNameChange} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="address">Address:</label>
+                        <label htmlFor="address">Location:</label>
                         <input className="form-control" type="text" value={element.address} id="address" onChange={this.onAddressChange} />
                     </div>
                     <div className="form-group">

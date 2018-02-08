@@ -13,7 +13,7 @@ class CompanyView extends React.Component {
             companyName: this.props.location.state.element.name,
             item: this.props.location.state.element
         },
-        this.onUpdateCompany = this.onUpdateCompany.bind(this);
+            this.onUpdateCompany = this.onUpdateCompany.bind(this);
         this.onDeleteCompany = this.onDeleteCompany.bind(this);
         this.onNameChange = this.onNameChange.bind(this);
         this.onAddressChange = this.onAddressChange.bind(this);
@@ -46,26 +46,28 @@ class CompanyView extends React.Component {
 
     onUpdateCompany() {
         let companyName = this.state.item.name
-        this.setState({companyName: companyName})
+        this.setState({ companyName: companyName })
         let companyID = this.state.item._id
-        //console.log(companyID)
-        let newContacts = this.props.contacts.map(function (el) {
-            el.company = companyName
-            el.company_id = companyID
-            //console.log(el)
-            return el
+        let oldName = this.state.companyName
+        let newContacts = this.props.contacts.filter(function (el) {
+            if ( oldName === el.company) {
+                el.company = companyName
+                el.company_id = companyID
+                return el
+            }
         })
-        let test = {old: this.state.companyName, new: companyName}
-        // console.log(test)
+        let test = { old: this.state.companyName, new: companyName }
         try {
-            this.props.updateContactsCompany(newContacts,test)
+            if (newContacts !== []) {
+                this.props.updateContactsCompany(newContacts, test)
+            }
             this.props.updateCompany(this.state.item)
         } catch (error) {
             // console.log(error)
         }
     }
 
-    onDeleteCompany(){
+    onDeleteCompany() {
         let company = this.props.location.state.element;
         this.props.deleteCompany(company._id)
         this.props.deleteContactsCompany(company.name)
@@ -88,7 +90,7 @@ class CompanyView extends React.Component {
                         <input className="form-control" type="text" value={element.name} id="name" onChange={this.onNameChange} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="address">Address:</label>
+                        <label htmlFor="address">Location:</label>
                         <input className="form-control" type="text" value={element.address} id="address" onChange={this.onAddressChange} />
                     </div>
                     <div className="form-group">
@@ -122,11 +124,11 @@ CompanyView.propTypes = {
 
 CompanyView.defaultProps = {
     contacts: [],
-    updateContactsCompany: () => {},
-    updateCompany: () => {},
-    deleteCompany: () => {},
-    deleteContactsCompany: () => {},
-    fetchContact: () => {},
+    updateContactsCompany: () => { },
+    updateCompany: () => { },
+    deleteCompany: () => { },
+    deleteContactsCompany: () => { },
+    fetchContact: () => { },
     location: null,
     history: null
 }

@@ -1,8 +1,7 @@
 .bg-nav {
-    background-color: #000;
     text-transform: uppercase;
     color: white;
-    background-color: black;
+    background-color: rgb(0, 22, 48);
 }
 
 .sideBar-list{
@@ -52,6 +51,10 @@ ul {
     }
 }
 
+.nav-front {
+    z-index: 1; /* Stay on top */
+}
+
 .sidebar-sticky {
     height: 100%; 
     position: fixed; /* Stay in place */
@@ -62,7 +65,8 @@ ul {
     width: 13rem;
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: rgba(68, 68, 90, 0.349);
+    /* background-color: rgba(68, 68, 90, 0.349); */
+    background-color: rgba(0, 22, 48, 0.61);
     
     box-shadow: 0 .5em 1em rgba(0,0,0,.3);
   }
@@ -111,13 +115,20 @@ ul {
       background-color: rgb(253, 255, 154);
       /* background: url('../img/paper.jpg'); */
       padding: 2rem;
+      font-family: 'Covered By Your Grace', cursive;
   }
 
   .card-charts {
       padding: 2rem;
-      background-color: rgb(49, 156, 49);
+      background-color: rgba(161, 212, 161, 0.74);
       margin-bottom: 1rem;
   }
+
+  .card-pie-charts {
+    padding: 2rem;
+    background-color: rgb(230, 127, 127);
+    margin-bottom: 1rem;
+}
 
   .todos-input {
       background-color: rgb(253, 255, 154);

@@ -48,7 +48,7 @@ class ToDosContainer extends React.Component {
                 <span><img src={require("../../img/add.png")} className="add-icon-todos" onClick={this.onClick}/></span>
                 {/* <button className="button-secondary pure-button" onClick={this.onClick}>Add Todo</button> */}
                 <ToDosList todos={this.props.todos} onItemDone={this.onItemDone} onItemDelete={this.onItemDelete} />
-                <h5>Done:</h5>
+                <h3>Done:</h3>
                 <ToDosDone todos={this.props.todos} onItemDone={this.onItemDone} onItemDelete={this.onItemDelete} />
             </div>
         );

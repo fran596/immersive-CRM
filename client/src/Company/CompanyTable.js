@@ -10,7 +10,7 @@ const CompanyTable = (props) => {
             <thead className="thead-bg " >
                 <tr>
                     <th scope="col" >Name</th>
-                    <th scope="col" >Address</th>
+                    <th scope="col" >Location</th>
                     <th scope="col" >Phone</th>
                 </tr>
             </thead>

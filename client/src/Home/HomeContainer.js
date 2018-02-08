@@ -6,6 +6,7 @@ import { fetchCompany } from '../Company/CompanyActions'
 import HomeProfileCard from './HomeProfileCard'
 import ToDosContainer from './Todos/ToDosContainer';
 import BarChartContainer from './BarChart/BarChartContainer'
+import PieChartContainer  from './PieChart/PieChartContainer'
 
 class HomeContainer extends React.Component {
 
@@ -28,18 +29,26 @@ class HomeContainer extends React.Component {
                     <div className='col-md-8 class-container float-right '>
                         <div className="card-table animated fadeInUp">
                             <div className=" card-todos">
-                                <h5>What's for today?</h5>
+                                <h2>What's for today?</h2>
                                 <ToDosContainer />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-12 class-container">
+                    <div className="col-md-8 class-container">
                         <div className="card-table animated fadeInUp">
                             <div className="card-charts">
                                 <h5>Your contacts distribution</h5>
                                 <BarChartContainer contacts={this.props.contacts} companies={this.props.companies} />
+                            </div>
+                        </div>
+                    </div >
+                    <div className="col-md-4 class-container">
+                        <div className="card-table animated fadeInUp">
+                            <div className="card-pie-charts text-center">
+                                <h5>Your company locations around the world</h5>
+                                <PieChartContainer companies={this.props.companies} />
                             </div>
                         </div>
                     </div>

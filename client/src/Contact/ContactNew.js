@@ -87,7 +87,7 @@ class ContactNew extends React.Component {
         return (
             <div className="col-md-10 class-container">
                 <div className="card-table card-edit">
-                    <h3>Edit Contact</h3>
+                    <h3>New Contact</h3>
                     <div className="form-group">
                         <label htmlFor="name">Name:</label>
                         <input className="form-control" type="text" value={element.name} id="name" onChange={this.onNameChange} />
